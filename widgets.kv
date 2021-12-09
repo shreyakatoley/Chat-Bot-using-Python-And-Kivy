@@ -1,0 +1,427 @@
+
+
+WindowManager:
+    MainWindow:
+    SecondWindow:
+    ThirdWindow1:
+    ThirdWindow2:
+    FourthWindow:
+    FourthWindow2:
+    Home:
+    Chat:
+    ProfileWindow:
+    SettingWindow:
+    HelpWindow:
+    
+   
+<Button>:
+    font_size:35
+    color:0,1,0,1
+
+
+<MainWindow>:
+    name: "welcome"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source:r'C:\Users\IAMWORLDLYWISE\APPLICATION1\background.jpg'
+    
+    GridLayout:
+        size:root.width ,root.height
+        cols:1
+        
+        GridLayout:
+            cols:2
+            
+            Label:
+                text: ' WELCOME TO THE WORLD OF ' '\n' '                     "AURA"'
+                color:(1,0,1,1)
+                font_size:'35sp'
+                
+            
+        
+             
+        Button:
+            #pos_hint:{"centre_x":0.8}
+            text:'NEXT'
+            #background_normal:''
+            background_color:0,0,0,0
+            on_release: 
+                app.root.current= "sign in"
+                
+<SecondWindow>:
+    name:"sign in"
+    
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source:r'C:\Users\IAMWORLDLYWISE\APPLICATION1\background.jpg'
+    
+    GridLayout:
+        size:root.width,root.height
+        cols:1
+        rows:11
+        spacing:10
+        padding:50
+    
+        Label:
+            
+            text:'_________SIGN UP__________'
+            color:0.1,0.2,0.3,1
+            font_size:'40sp'           
+        Label:
+            id:info
+            text:''
+            color:1,0,0,1
+            markup:True
+        Label:
+            text:'Age'
+            color:0,0,1,1
+            
+        TextInput:
+            id:age
+            hint_text:"Enter your age in years"
+            hint_text_color:0.5,0.5,0.5,0.5
+            multiline:False
+            focus:True
+            on_text_validate:gen.focus=True
+        Label:
+            text:'Gender'
+            color:0,0,1,1
+        TextInput:
+            id:gen
+            hint_text:"M/F/O"
+            hint_text_color:0.5,0.5,0.5,0.5
+            multiline:False
+            
+        Button:
+            id:submit1
+            text:'Submit'
+            background_color:0,0,0,0
+            font_size:"20sp"
+            on_release:
+                root.validate_field1() 
+                #app.root.current="passwd"
+
+        Label:
+            text:'Already have an account?'
+            color:0,0,1,1
+        Button:
+            text:'Sign In'
+            background_color:0,0,0,0
+            font_size:"15sp"
+            on_release:
+                app.root.current="signin"
+            
+<ThirdWindow1>:
+    name:"submit"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source:r'C:\Users\IAMWORLDLYWISE\APPLICATION1\background.jpg'
+    
+    GridLayout:
+        col:1
+        rows:5
+        Label:
+            text:'You have successfully created your account.'  
+            font_size:'20sp'
+            color:1,0,.4,1
+        Button:
+            text:'Click here to know your assigned name.'
+            background_color:0,0,0,0
+            color:.5,.1,.4,1
+            font_size:"15sp"
+            on_release:
+                root.assignname()
+        Label:
+            id:names
+            font_size:'20sp'
+            color:.4,.3,.6,1
+            text:''
+            markup:True
+        Label:
+            text:'  Remember this as it will be your username.'
+            font_size:'20sp'
+            color:1,0,.4,1
+        Button:
+            text:'Next' 
+            background_color:0,0,0,0 
+            on_release:
+                app.root.current="home"
+             
+            
+<ThirdWindow2>:
+    name:"signin"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source:r'C:\Users\IAMWORLDLYWISE\APPLICATION1\background.jpg'
+    GridLayout:   
+        cols:1
+        rows:10
+        spacing:10
+        padding:50
+        Label:
+            text:'_________SIGN IN__________'
+            color:0.1,0.2,0.3,1
+            font_size:'30sp' 
+        Label:
+            text:'Username'
+            color:0,0,1,1
+        TextInput:
+            
+            id:uname
+            multiline:False
+        Label:
+            text:'Password'
+            color:0,0,1,1
+        TextInput:
+            id:passwd
+            multiline:False
+        Button:
+            text:'Submit'
+            background_color:0,0,0,0
+            font_size:"20sp"
+            on_release:
+                app.root.current="home"
+
+        Label:
+            text:'Dont have an account? Create one.'
+            color:0,0,1,1
+        Button:
+            text:'Sign Up'
+            font_size:"15sp"
+            background_color:0,0,0,0
+            on_release:
+                app.root.current="sign in"
+        Label:
+            text:'I forgot my password'
+            color:0,0,1,1
+        Button:
+            text:'Click Here'
+            background_color:0,0,0,0
+            font_size:"15sp"
+            on_release:
+                app.root.current="forpass"
+            
+                
+                
+<FourthWindow>:
+
+    name:"passwd"
+    
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source:r'C:\Users\IAMWORLDLYWISE\APPLICATION1\background.jpg'
+    GridLayout: 
+        cols:1  
+        spacing:10
+        padding:50
+        Label:
+            text:"SET YOUR PASSWORD"
+            color:0.1,0.2,0.3,1
+            font_size:"30sp"
+        Label:
+            id:info2
+            text:''
+            color:1,0,0,1
+            markup:True
+        Label:
+            text:"Password"
+            color:0,0,1,1
+        TextInput:
+            id:passwd
+            #hint_text:
+            hint_text_color:0.5,0.5,0.5,0.5
+            multiline:False
+            focus:True
+            on_text_validate:re_passwd.focus=True
+        Label:
+            text:"Re-enter Password"
+            color:0,0,1,1
+        TextInput:
+            id:re_passwd
+            hint_text:"Passwords should match"
+            hint_text_color:0.5,0.5,0.5,0.5
+            multiline:False
+            focus:True
+            on_text_validate:sec_answer.focus=True
+        Label:
+            text:"Security Question: Your favourite book?"
+            color:0,0,1,1
+        TextInput:
+            id:sec_answer
+            hint_text:"This will be used incase you forget your password"
+            hint_text_color:0.5,0.5,0.5,0.5
+            multiline:False
+            
+        Button:
+            text:"Submit"
+            font_size:"20sp"
+            
+            background_color:0,0,0,0
+            on_release:
+                root.validate_pass()
+        Button:
+            text:"Back"
+            font_size:"15sp"
+            on_release:app.root.current="sign in"
+            background_color:0,0,0,0
+            
+            
+
+<FourthWindow2>:        
+    name:"forpass"
+    
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source:r'C:\Users\IAMWORLDLYWISE\APPLICATION1\background.jpg'
+    GridLayout: 
+        cols:1 
+        spacing:10
+        padding:50
+        Label:
+            text:'_________Forgot Passward__________'
+            color:0.1,0.2,0.3,1
+            font_size:'30sp' 
+        Label:
+            text:"Username"
+            color:0.1,0.2,0.3,1
+            font_size:'20sp'
+        TextInput:
+            id:sec_user
+            multiline:False
+        Label:
+            text:''
+        Label:
+            text:"Security Question"
+            color:0.1,0.2,0.3,1
+            font_size:'20sp'
+           
+            
+        Label:
+            text:'Your favourite book ?'
+            font_size:'15sp'
+            color:0,0,1,1
+        
+            
+        TextInput:
+            id:sec_answer
+            multiline:False
+        Label:
+            text:''
+        
+            
+        Button:
+            text:'Submit'
+            font_size:"20sp"
+            background_color:0,0,0,0
+            on_release:
+                app.root.current="home"
+    
+<Home>:
+    name:"home"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            #source:r'C:\Users\IAMWORLDLYWISE\APPLICATION1\background.jpg'
+            
+    GridLayout:
+        cols:3
+        spacing:50
+        padding:50
+        Button:
+            background_normal:r'C:\\Users\\IAMWORLDLYWISE\\APPLICATION1\\tetra.jpg'
+            on_release:
+                app.root.current="chat"
+        Button:
+            background_normal:r'C:\\Users\\IAMWORLDLYWISE\\APPLICATION1\\profile.jpg'
+            on_release:
+                app.root.current="profile"
+        Button:
+            background_normal:r'C:\\Users\\IAMWORLDLYWISE\\APPLICATION1\\setting.jpg'
+            on_release:
+                app.root.current="settings"
+
+            
+        Button:
+            background_normal:r'C:\\Users\\IAMWORLDLYWISE\\APPLICATION1\\help.jpg'
+            on_release:
+                app.root.current="help"
+        Button:
+            background_normal:r'C:\\Users\\IAMWORLDLYWISE\\APPLICATION1\\contact us.jpg'
+            on_release:
+                app.root.current="contact"
+       
+<Chat>:
+    name:"chat"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source:r'C:\Users\IAMWORLDLYWISE\APPLICATION1\chatbg.jpg'
+    
+    GridLayout:
+        spacing:10
+        padding:50
+        cols:2
+        Label:
+            id:rep
+            text:''
+            color:.5,.3,.5,1
+            markup:True  
+        Label:
+            id:qry
+            text:''
+            color:.5,.3,.5,1
+            markup:True
+        TextInput:
+            id:query1
+        Button:
+            background_normal:r'C:\\Users\\IAMWORLDLYWISE\\APPLICATION1\\sub_icon.png'
+            on_release:
+                root.reply()  
+        Button:
+            background_normal:r'C:\\Users\\IAMWORLDLYWISE\\APPLICATION1\\mic.jpg'
+            on_release:
+                root.speak() 
+        Button:
+            text:'Back'
+            background_color:0,0,0,0
+            font_size:"20sp"
+            color:.5,.3,.5,1
+            on_release:
+                root.ret_home()
+            
+        
+            
+<ProfileWindow>:
+    name:"profile"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source:r'C:\Users\IAMWORLDLYWISE\APPLICATION1\background.jpg'
+    GridLayout: 
+        cols:1 
+        spacing:10
+        padding:50
+        Label:
+            text:'_________Profile__________'
+            color:0.1,0.2,0.3,1
+            font_size:'30sp' 
+            
+        
+            
+        
+                
